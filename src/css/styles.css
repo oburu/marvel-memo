@@ -1,0 +1,84 @@
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
+body, html {
+  height:100%;
+  width:100%;
+  color:white;
+}
+.app, #root{
+  height:100%;
+}
+.container{
+  width:600px;
+  margin: 0 auto;
+}
+
+.header{
+  background-color: black;
+  padding:10px;
+  font-family: 'Lato', sans-serif;
+}
+
+.header .header-title{
+  font-size: 30px;
+  font-weight: 300;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.big{
+  font-weight: 700;
+}
+.logo{
+  background-image: url("../images/logo.jpg");
+  height: 45px;
+  width: 100px;
+  float: left;
+  margin-right:5px;
+  background-size: contain;
+}
+.home-page{
+  height:100%;
+  display: flex;
+  flex-direction: column;
+}
+.home-page-top{
+  height:15rem;
+}
+.home-page-middle{
+  background-image: url('../images/diagonal_bg.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 20px;
+}
+.home-page-bottom{
+  background-color: #000033;
+  display: flex;
+  flex-direction: column;
+  height:100%;
+}
+.home-page-bottom .content{
+  flex: 1;
+  width:600px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.super-heroe-section{
+  display: flex;
+}
+.super-heroe{
+  margin-left: auto;
+}
+@media (max-width: 600px) {
+  .container{
+    width:380px;
+    margin: 0 auto;
+  }
+  .home-page-bottom .content{
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 300px;
+    padding: 15px;
+  }
+}
