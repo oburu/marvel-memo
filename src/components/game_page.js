@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Card from './card';
+import Modal from './modal';
 
 const COMICS = [
   {name:'wolverine'},{name:'spiderman'},{name:'daredevil'},{name:'x-men'},
@@ -11,19 +12,38 @@ class GamePage extends Component {
   constructor(props){
     super(props);
 
-    this.onClickHandler = this.onClickHandler.bind(this);
+    this.state ={
+      showModal: false
+    }
+
+    this.onQuit = this.onQuit.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
 
-  onClickHandler(){
+  closeModal(){
+    this.setState({ showModal:false });
     this.props.onStartClick();
   }
 
+  onQuit(){
+    this.setState({ showModal:true });
+  }
+
   render(){
-    let renderCards = COMICS.map((item, key) => {
-      return (
-        <Card key={key}/>
-      );
-    });
+    const cards = COMICS.map((item, key) => <Card key={key}/>);
+    const renderCards = this.props.startGame ? cards : <h1 className="bubble__title">Loading...</h1>;
+
+    const renderModal = () =>{
+      if(this.state.showModal){
+        return (
+          <Modal>
+            <h1 className="bubble__title">Are you sure?</h1>
+            <button className="btn btn--main" onClick={this.closeModal}>YES, QUIT</button>
+          </Modal>
+        );
+      }
+    }
+
     return(
       <div className="game-page">
         <div className="game-page-top">
@@ -43,7 +63,7 @@ class GamePage extends Component {
               {renderCards}
             </div>
             <div className="buttons-section">
-              <button className="btn btn--main" onClick={this.onClickHandler}>quit game</button>
+              <button className="btn btn--main" onClick={this.onQuit}>quit game</button>
             </div>
           </div>
         </div>
@@ -52,6 +72,7 @@ class GamePage extends Component {
             <p className="home-page-footer--p">Rebus.io 2017 ©</p>
           </div>
         </div>
+        {renderModal()}
       </div>
     );
   }
