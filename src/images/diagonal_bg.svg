@@ -1,14 +1,18 @@
 
-<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="1200px" height="160px" viewBox="0 0 1200 160">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" x="0px" y="0px" width="900px" height="200px" viewBox="0 0 900 200">
 <defs>
 <g id="Layer0_0_FILL">
+<path fill="#FFFFFF" stroke="none" d="
+M 900 107
+L 900 1 0 1 0 37 900 107 Z"/>
+
 <path fill="#191947" stroke="none" d="
-M 1200 110.3
-L 1200 69.55 0 0 0 40.75 1200 110.3 Z"/>
+M 900 147
+L 900 107 0 37 0 77.1 900 147 Z"/>
 
 <path fill="#000033" stroke="none" d="
-M 1200 160
-L 1200 110.3 0 40.75 0 160 1200 160 Z"/>
+M 900 200
+L 900 147 0 77.1 0 200 900 200 Z"/>
 </g>
 </defs>
 

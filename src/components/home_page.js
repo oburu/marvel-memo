@@ -6,7 +6,10 @@ class HomePage extends Component {
       <div className="home-page">
         <div className="home-page-top">
           <div className="container">
-            <h1>Hello</h1>
+            <div className="bubble">
+              <h1 className="bubble__title">WELCOME!</h1>
+              <p className="bubble__p">Please, Please, choose one of the options below.</p>
+            </div>
           </div>
         </div>
         <div className="home-page-middle">
@@ -19,8 +22,15 @@ class HomePage extends Component {
           </div>
         </div>
         <div className="home-page-bottom">
-          <div className="content">
-            <h1>Hello</h1>
+          <div className="container">
+            <button className="btn btn--main">Single player game</button>
+            <button className="btn btn--main">Multi player game</button>
+            <button className="btn btn--main">Join game</button>
+          </div>
+        </div>
+        <div className="home-page-footer">
+          <div className="container">
+            <p className="home-page-footer--p">Rebus.io 2017 ©</p>
           </div>
         </div>
       </div>
