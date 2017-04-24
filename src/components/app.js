@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './header';
 import HomePage from './home_page';
+import GamePage from './game_page';
 
 const HOME_PAGE_DOWN = 'home-page home-page--menu-down';
 
@@ -26,6 +27,7 @@ class App extends Component {
       <div className="app">
           <Header/>
           <HomePage homePageStyles={this.state.showHomePage} onStartClick={this.showMenu}/>
+          <GamePage onStartClick={this.showMenu}/>
       </div>
     );
   }

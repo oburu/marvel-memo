@@ -10,11 +10,11 @@ class HomePage extends Component {
   onClickHandler(){
     this.props.onStartClick();
   }
-  
+
   render(){
     return(
       <div className={this.props.homePageStyles}>
-        <div className={"home-page-top"}>
+        <div className="home-page-top">
           <div className="container">
             <div className="bubble">
               <h1 className="bubble__title">WELCOME!</h1>
