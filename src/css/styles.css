@@ -57,6 +57,8 @@ body, html {
 .home-page-top{
   background-color: white;
   padding-top: 90px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .home-page-middle{
   background-image: url('../images/diagonal_bg.svg');
@@ -69,22 +71,18 @@ body, html {
   background-color: #000033;
   padding: 20px;
 }
-
-
 .super-heroe-section{
   display: flex;
 }
 .super-heroe{
   margin-left: auto;
-  right: 15px;
+  margin-right: 10%;
 }
 
 .bubble{
   margin:0 auto;
   position: relative;
-  width: 330px;
-  height: 80px;
-  padding: 20px;
+  width: 400px;
   background: #00CC99;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -95,8 +93,13 @@ body, html {
   font-family: 'Bangers', cursive;
   font-size: 2rem;
   margin-bottom: 10px;
+  padding-left: 15px;
+  padding-top: 20px;
 }
 .bubble__p{
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 20px;
   font-size: 1.2rem;
   font-family: 'Lato', sans-serif;
 }
@@ -162,10 +165,41 @@ body, html {
 
 @media (max-width: 600px) {
   .container{
-    width:380px;
+    width:100%;
     margin: 0 auto;
   }
   .btn{
-    width:100%;
+    width:80%;
+    font-size: 1.2rem;
+    padding:10px;
   }
+  .bubble{
+    width:80%;
+  }
+  .bubble:after{
+    left: 200px;
+  }
+  .bubble:before{
+    left: 196px;
+  }
+  .home-page-top{
+    padding-top: 80px;
+  }
+  .home-page-middle{
+    height: 100px;
+  }
+
+  .bubble__title{
+    font-size: 1.2rem;
+  }
+  .bubble__p{
+    font-size: 1rem;
+  }
+  .super-heroe{
+    height:190px;
+  }
+  .super-heroe img{
+    height:130px;
+  }
+
 }

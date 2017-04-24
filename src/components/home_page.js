@@ -10,6 +10,7 @@ class HomePage extends Component {
   onClickHandler(){
     this.props.onStartClick();
   }
+  
   render(){
     return(
       <div className={this.props.homePageStyles}>

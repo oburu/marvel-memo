@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       showHomePage:HOME_PAGE_DOWN
     }
-
     this.showMenu = this.showMenu.bind(this);
   }
 
@@ -31,5 +30,4 @@ class App extends Component {
     );
   }
 }
-
 export default App;
