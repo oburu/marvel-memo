@@ -1,10 +1,19 @@
 import React, {Component} from 'react';
 
 class HomePage extends Component {
+  constructor(props){
+    super(props);
+
+    this.onClickHandler = this.onClickHandler.bind(this);
+  }
+
+  onClickHandler(){
+    this.props.onStartClick();
+  }
   render(){
     return(
-      <div className="home-page">
-        <div className="home-page-top">
+      <div className={this.props.homePageStyles}>
+        <div className={"home-page-top"}>
           <div className="container">
             <div className="bubble">
               <h1 className="bubble__title">WELCOME!</h1>
@@ -23,7 +32,7 @@ class HomePage extends Component {
         </div>
         <div className="home-page-bottom">
           <div className="container">
-            <button className="btn btn--main">Single player game</button>
+            <button className="btn btn--main" onClick={this.onClickHandler}>Single player game</button>
             <button className="btn btn--main">Multi player game</button>
             <button className="btn btn--main">Join game</button>
           </div>

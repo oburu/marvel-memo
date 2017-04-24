@@ -21,7 +21,7 @@ body, html {
   position: fixed;
   width:100%;
   z-index: 2;
-
+  border-bottom: 1px solid #424040;
 }
 
 .header .header-title{
@@ -49,9 +49,11 @@ body, html {
   transition: all 400ms ease-in-out;
   bottom: 1000px;
 }
+
 .home-page--menu-down {
-    transform: translateY(1000px);
-    min-height: 400px; }
+  transform: translateY(1000px);
+  min-height: 400px;
+}
 .home-page-top{
   background-color: white;
   padding-top: 90px;
@@ -137,6 +139,10 @@ body, html {
   display:block;
   text-transform: uppercase;
   font-family: 'Bangers', cursive;
+}
+
+.btn:hover{
+  cursor: pointer;
 }
 .btn--main{
   background-color: #ED1A23;
