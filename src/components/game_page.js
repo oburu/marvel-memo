@@ -3,12 +3,8 @@ import axios from 'axios';
 import CryptoJS from 'crypto-js';
 import Card from './card';
 import Modal from './modal';
+import InfoMessage from './info_message';
 
-const COMICS = [
-  {name:'wolverine'},{name:'spiderman'},{name:'daredevil'},{name:'x-men'},
-  {name:'wolverine'},{name:'spiderman'},{name:'daredevil'},{name:'x-men'},
-  {name:'wolverine'},{name:'spiderman'},{name:'daredevil'},{name:'x-men'}
-];
 const PRIV_KEY = "c489aff329d83d09815b554f38d843ba42a5061a";
 const PUBLIC_KEY = "2a7fca050595ffa66aaf74e2b1bae70f";
 const URL = 'https://gateway.marvel.com/v1/public/comics';
@@ -46,7 +42,7 @@ class GamePage extends Component {
 
   setComicsList(allComics){
     let comics = allComics.filter((item) => item.thumbnail.path.split('_')[1] !== "not");
-    let comic8 = comics.slice(0, 8);//pick eight first
+    let comic8 = comics.slice(0, 6);//pick eight first
     let comicGrid = [...comic8, ...comic8];// duplicate the 8 first (needed 16 in total)
     comicGrid.sort(() =>  0.5 - Math.random());//randomize order
     this.setState({comics: comicGrid});// set state
@@ -60,7 +56,10 @@ class GamePage extends Component {
 
   closeModal(){
     this.props.onStartClick();
-    this.setState({ showModal:false });
+    this.setState({
+      comics:[],
+      showModal:false
+    });
   }
 
   onQuit(){
@@ -68,7 +67,7 @@ class GamePage extends Component {
   }
 
   render(){
-    const cards = COMICS.map((item, key) => <Card key={key}/>);
+    const cards = this.state.comics.map((item, key) => <Card key={key} comic={this.state.comics[key]}/>);
     const renderCards = this.state.comics.length > 0 ? cards : <h1 className="bubble__title">Loading...</h1>;
 
     const renderModal = () =>{
@@ -84,14 +83,7 @@ class GamePage extends Component {
 
     return(
       <div className="game-page">
-        <div className="game-page-top">
-          <div className="container">
-            <div className="bubble-side">
-              <h1 className="bubble__title bubble-side__title">Hello there!</h1>
-            </div>
-            <img alt="heroe-img" className="bubble-side-heroe-img" src={require('../images/wolverine-head.svg')}/>
-          </div>
-        </div>
+        <InfoMessage />
         <div className="game-page-middle">
           <div className="container">
             <div className="counter">
