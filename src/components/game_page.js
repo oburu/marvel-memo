@@ -14,11 +14,18 @@ class GamePage extends Component {
     super(props);
 
     this.state = {
+      flipAllCards: 'card',
+      firstComic: 123,
+      secondComic:456,
+      flippedCards:0,
       comics:[],
+      message: 'Hello, pick one card',
       showModal: false
     }
     this.onQuit = this.onQuit.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.handleTurn = this.handleTurn.bind(this);
   }
 
   fetchComics(){
@@ -61,13 +68,54 @@ class GamePage extends Component {
       showModal:false
     });
   }
+  onCancel(){
+    this.setState({ showModal:false });
+  }
+
+  handleTurn(comic){
+    if(this.state.firstComic === this.state.secondComic){
+      console.log('estos putos comics son iguales');
+    }
+    switch (this.state.flippedCards){
+      case 0:
+        this.setState({
+          firstComic: comic.id,
+          message: "good, Choose another one",
+          flippedCards: this.state.flippedCards + 1
+        });
+        break;
+      case 1:
+        this.setState({
+          secondComic: comic.id,
+          message: "let see",
+          flippedCards: this.state.flippedCards + 1
+        });
+        break;
+      case 2:
+        this.setState({
+          firstComic: '',
+          secondComic:'',
+          message: "you are the best",
+          flippedCards: 0,
+          flipAllCards: 'card'
+        });
+        break;
+      default:
+        this.setState({
+          firstComic: '',
+          secondComic:'',
+          message: "holla back young'n uh uh",
+          flippedCards: 0
+        });
+    }
+  }
 
   onQuit(){
     this.setState({ showModal:true });
   }
 
   render(){
-    const cards = this.state.comics.map((item, key) => <Card key={key} comic={this.state.comics[key]}/>);
+    const cards = this.state.comics.map((item, key) => <Card key={key} comic={this.state.comics[key]} turn={this.handleTurn} cardStyle={this.state.flipAllCards}/>);
     const renderCards = this.state.comics.length > 0 ? cards : <h1 className="bubble__title">Loading...</h1>;
 
     const renderModal = () =>{
@@ -76,6 +124,7 @@ class GamePage extends Component {
           <Modal>
             <h1 className="bubble__title">Are you sure?</h1>
             <button className="btn btn--main" onClick={this.closeModal}>YES, QUIT</button>
+            <button className="btn btn--main" onClick={this.onCancel}>cancel</button>
           </Modal>
         );
       }
@@ -83,7 +132,7 @@ class GamePage extends Component {
 
     return(
       <div className="game-page">
-        <InfoMessage />
+        <InfoMessage message={this.state.message}/>
         <div className="game-page-middle">
           <div className="container">
             <div className="counter">

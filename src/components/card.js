@@ -6,15 +6,19 @@ class Card extends Component{
     super(props);
 
     this.state = {
-      cardStyles: CARD_STYLES
+      cardStyles: this.props.cardStyle,
+      paired: false
     }
     this.flip = this.flip.bind(this);
   }
 
-  flip(){
-    this.setState({
-      cardStyles: this.state.cardStyles ===  CARD_STYLES ? 'card flip' : CARD_STYLES
-    })
+  flip(e){
+    if(!this.state.paired){
+      this.setState({
+        cardStyles: this.state.cardStyles ===  CARD_STYLES ? 'card flip' : CARD_STYLES
+      });
+      this.props.turn(this.props.comic);
+    }
   }
   render(){
     let cardStyles = this.state.cardStyles;

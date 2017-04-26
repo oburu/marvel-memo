@@ -217,7 +217,7 @@ body, html {
   margin: 5px auto;
   text-align: center;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.5s;
   transform-style: preserve-3d;
   position: relative;
 }
@@ -227,8 +227,8 @@ body, html {
 
 .flip-container {
   perspective: 1000px;
-
 }
+
 .flip {
   transform: rotateY(180deg);
 }
@@ -244,8 +244,6 @@ body, html {
   transform: rotateY(0deg);
   backface-visibility: hidden;
 }
-
-
 
 .counter{
   padding: 0 15px 15px 15px;
