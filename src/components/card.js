@@ -1,30 +1,31 @@
 import React, {Component} from 'react';
 
-const CARD_STYLES = "card";
 class Card extends Component{
   constructor(props){
     super(props);
 
     this.state = {
-      cardStyles: this.props.cardStyle,
-      paired: false
+      paired: false,
+      discover: false,
+      flipStyle: 'card'
     }
     this.flip = this.flip.bind(this);
   }
 
   flip(e){
-    if(!this.state.paired){
+    if(!this.state.paired && !this.state.discover){
       this.setState({
-        cardStyles: this.state.cardStyles ===  CARD_STYLES ? 'card flip' : CARD_STYLES
+        discover: true,
+        flipStyle: 'flip card'
       });
-      this.props.turn(this.props.comic);
+      this.props.selectComic(this.props.comic);
     }
   }
   render(){
-    let cardStyles = this.state.cardStyles;
+
     return(
       <div className="flip-container" onClick={this.flip}>
-        <div className={cardStyles}>
+        <div className={this.props.cardStyle}>
           <div className="card__back"><img alt="card_back" src={require('../images/card_bg.svg')}/></div>
           <div className="card__front">
             <img alt="card_front" src={this.props.comic.thumbnail.path+"."+this.props.comic.thumbnail.extension}/>

@@ -14,10 +14,9 @@ class GamePage extends Component {
     super(props);
 
     this.state = {
-      flipAllCards: 'card',
-      firstComic: 123,
-      secondComic:456,
-      flippedCards:0,
+      flipAllCards: 'flip card',
+      clickedComic:1,
+      auxComic: undefined,
       comics:[],
       message: 'Hello, pick one card',
       showModal: false
@@ -25,7 +24,7 @@ class GamePage extends Component {
     this.onQuit = this.onQuit.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.onCancel = this.onCancel.bind(this);
-    this.handleTurn = this.handleTurn.bind(this);
+    this.selectedComics = this.selectedComics.bind(this);
   }
 
   fetchComics(){
@@ -72,50 +71,44 @@ class GamePage extends Component {
     this.setState({ showModal:false });
   }
 
-  handleTurn(comic){
-    if(this.state.firstComic === this.state.secondComic){
-      console.log('estos putos comics son iguales');
-    }
-    switch (this.state.flippedCards){
-      case 0:
-        this.setState({
-          firstComic: comic.id,
-          message: "good, Choose another one",
-          flippedCards: this.state.flippedCards + 1
-        });
-        break;
-      case 1:
-        this.setState({
-          secondComic: comic.id,
-          message: "let see",
-          flippedCards: this.state.flippedCards + 1
-        });
-        break;
-      case 2:
-        this.setState({
-          firstComic: '',
-          secondComic:'',
-          message: "you are the best",
-          flippedCards: 0,
-          flipAllCards: 'card'
-        });
-        break;
-      default:
-        this.setState({
-          firstComic: '',
-          secondComic:'',
-          message: "holla back young'n uh uh",
-          flippedCards: 0
-        });
-    }
-  }
-
   onQuit(){
     this.setState({ showModal:true });
   }
 
+  selectedComics(comic){
+    if(this.state.auxComic === undefined){
+      this.setState({
+        auxComic: comic.id
+      });
+
+    }else{
+      if(this.state.auxComic === comic.id){
+        console.log('son putos iguales')
+      }else{
+        this.setState({
+          auxComic: undefined
+        });
+        console.log('no son iguales')
+      }
+    }
+
+
+    this.setState({
+      clickedComic: this.state.clickedComic +1
+    });
+    if(this.state.clickedComic > 1){
+      this.setState({
+        clickedComic:1,
+        auxComic: undefined
+      });
+    }
+    console.log('you just select ' + comic.id + ' selectComic:'+this.state.clickedComic);
+  }
+
   render(){
-    const cards = this.state.comics.map((item, key) => <Card key={key} comic={this.state.comics[key]} turn={this.handleTurn} cardStyle={this.state.flipAllCards}/>);
+    let cards = this.state.comics.map((item, key) => {
+      return <Card key={key} comic={this.state.comics[key]} selectComic={this.selectedComics} cardStyle={this.state.flipAllCards}/>
+    });
     const renderCards = this.state.comics.length > 0 ? cards : <h1 className="bubble__title">Loading...</h1>;
 
     const renderModal = () =>{
