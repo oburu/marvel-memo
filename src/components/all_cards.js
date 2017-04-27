@@ -26,7 +26,7 @@ class AllCards extends Component{
       comics:[],
       lastCard: null,
       locked: false,
-      matches: 0
+      matches: null
     }
     this.renderCards = this.renderCards.bind(this);
     this.checkMatch = this.checkMatch.bind(this);
@@ -39,7 +39,7 @@ class AllCards extends Component{
       params: {
         ts: TS,
         apikey: PUBLIC_KEY,
-        limit: 100,
+        limit: 50,
         hash: HASH
       }
     })
@@ -59,7 +59,10 @@ class AllCards extends Component{
     let comic6 = comics.slice(0, 6);//pick eight first
     let comicDuplicate = comic6.concat(comic6);
     generateArray(comicDuplicate.sort(() =>  0.5 - Math.random()));
-    this.setState({comics: generateArray(comicDuplicate)});// set state
+    this.setState({
+      comics: generateArray(comicDuplicate),
+      matches: 0
+    });// set state
     this.props.message('Ok, pick a card');
   }
 
@@ -68,14 +71,14 @@ class AllCards extends Component{
       this.fetchComics();
     }
     if(!nextProps.startGame){
-      this.setState({comics:[]});
+      this.setState({
+        comics:[],
+        lastCard: null,
+        locked: false,
+        matches: null
+      });
     }
   }
-    // console.log(this.state.matches)
-    // if (this.state.matches === this.state.comics.length / 2) {
-    //   this.props.message('You Win! Play Again?');
-    //
-    // }
 
 
   checkMatch(value, id) {
@@ -124,7 +127,10 @@ class AllCards extends Component{
   }
 
   render(){
-    const renderComics = this.state.comics.length > 0 ? this.renderCards(this.state.comics) : <h1 className="bubble__title">Loading...</h1>
+    const renderComics = this.state.comics.length > 0 ? this.renderCards(this.state.comics) : <h1 className="bubble__title">Loading...</h1>;
+    if (this.state.matches === this.state.comics.length / 2) {
+      console.log('You Win! Play Again?');
+    }
     return(
       <div className="cards">
         {renderComics}
