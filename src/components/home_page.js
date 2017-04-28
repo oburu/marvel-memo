@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 
+const notYet = {
+  textDecoration: 'line-through',
+  cursor: 'not-allowed'	
+}
 class HomePage extends Component {
   constructor(props){
     super(props);
@@ -34,8 +38,8 @@ class HomePage extends Component {
         <div className="home-page-bottom">
           <div className="container">
             <button className="btn btn--main" onClick={this.onClickHandler}>Single player game</button>
-            {/*<button className="btn btn--main">Multi player game</button>
-            <button className="btn btn--main">Join game</button>*/}
+            <button className="btn btn--main" style={notYet}>Multi player game</button>
+            <button className="btn btn--main"style={notYet}>Join game</button>
           </div>
         </div>
         <div className="home-page-footer">

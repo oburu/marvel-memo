@@ -58,7 +58,7 @@ class AllCards extends Component{
       return item.thumbnail.path.split('_')[1] !== "not"
     })
     comics.sort(() =>  0.5 - Math.random());
-    let comic6 = comics.slice(0, 2);//pick eight first
+    let comic6 = comics.slice(0, 6);//pick eight first
     let comicDuplicate = comic6.concat(comic6);
     generateArray(comicDuplicate.sort(() =>  0.5 - Math.random()));
     this.setState({

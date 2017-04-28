@@ -283,7 +283,7 @@ body, html {
 	text-align: center;
 	position:relative;
 	width:60%;
-	margin: 10% auto;
+	margin: 15% auto;
 	background-color: #000033;
 	padding:20px;
 	display:block;
@@ -373,5 +373,8 @@ body, html {
   .logo{
     height: 30px;
     width: 65px;
+  }
+  .modal{
+    margin: 30% auto;
   }
 }
