@@ -15,6 +15,7 @@ class GamePage extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.changeMessage = this.changeMessage.bind(this);
+    this.playAgain = this.playAgain.bind(this);
   }
   closeModal(){
     this.props.onStartClick();
@@ -32,6 +33,13 @@ class GamePage extends Component {
   changeMessage(message){
     this.setState({message});
   }
+  playAgain(){
+    this.setState({
+      message: 'cool, fetching comics',
+      showModal: false,
+      endGame:false
+    });
+  }
 
   render(){
     const renderModal = () =>{
@@ -45,7 +53,6 @@ class GamePage extends Component {
         );
       }
     }
-
     return(
       <div className="game-page">
         <InfoMessage message={this.state.message}/>
@@ -54,7 +61,7 @@ class GamePage extends Component {
             <div className="counter">
               <h2>PLAYER 1 - POINTS: 0</h2>
             </div>
-            <AllCards startGame={this.props.startGame} message={this.changeMessage}/>
+            <AllCards startGame={this.props.startGame} message={this.changeMessage} playAgain={this.playAgain}/>
             <div className="buttons-section">
               <button className="btn btn--main" onClick={this.onQuit}>quit game</button>
             </div>

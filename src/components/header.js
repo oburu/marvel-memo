@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Header = () =>{
+const Header = (props) =>{
   return(
-    <div className="header">
-      <div className="container">
+    <div className={props.headerStyle}>
+      <div className="container logo-group">
         <div className="logo"/><h3 className="header-title"><span className="big">M</span>EMO</h3>
       </div>
     </div>

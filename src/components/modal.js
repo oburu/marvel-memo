@@ -7,6 +7,10 @@ class Modal extends Component{
     this.modalTarget.className = 'modal-overlay';
     document.body.appendChild(this.modalTarget);
     this._render();
+    setTimeout(()=>{
+      this.modalTarget.className = 'modal-overlay modal-overlay-open';
+    },1);
+
   }
 
   componentWillUpdate(){
@@ -20,7 +24,7 @@ class Modal extends Component{
 
   _render(){
     ReactDOM.render(
-      <div className="modal">
+      <div className='modal'>
         {this.props.children}
       </div>
     , this.modalTarget);

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import CryptoJS from 'crypto-js';
 import Card from './card';
+import Modal from './modal';
 
 const PRIV_KEY = "c489aff329d83d09815b554f38d843ba42a5061a";
 const PUBLIC_KEY = "2a7fca050595ffa66aaf74e2b1bae70f";
@@ -30,6 +31,7 @@ class AllCards extends Component{
     }
     this.renderCards = this.renderCards.bind(this);
     this.checkMatch = this.checkMatch.bind(this);
+    this.playAgain = this.playAgain.bind(this);
   }
 
   fetchComics(){
@@ -56,7 +58,7 @@ class AllCards extends Component{
       return item.thumbnail.path.split('_')[1] !== "not"
     })
     comics.sort(() =>  0.5 - Math.random());
-    let comic6 = comics.slice(0, 6);//pick eight first
+    let comic6 = comics.slice(0, 2);//pick eight first
     let comicDuplicate = comic6.concat(comic6);
     generateArray(comicDuplicate.sort(() =>  0.5 - Math.random()));
     this.setState({
@@ -80,7 +82,6 @@ class AllCards extends Component{
     }
   }
 
-
   checkMatch(value, id) {
     if (this.state.locked) {
       return;
@@ -102,7 +103,6 @@ class AllCards extends Component{
           this.setState({comics, lastCard: null, locked: false});
         }, 1000);
       }
-
     } else {
       this.setState({
         lastCard: {id, value},
@@ -125,15 +125,33 @@ class AllCards extends Component{
       );
     });
   }
+  playAgain(){
+    this.setState({
+      comics:[],
+      lastCard: null,
+      locked: false,
+      matches: null
+    });
+    this.fetchComics();
+  }
 
   render(){
-    const renderComics = this.state.comics.length > 0 ? this.renderCards(this.state.comics) : <h1 className="bubble__title">Loading...</h1>;
-    if (this.state.matches === this.state.comics.length / 2) {
-      console.log('You Win! Play Again?');
+    const renderEndGame = () =>{
+      if(this.state.matches === this.state.comics.length / 2){
+        return (
+          <Modal>
+            <h1 className="bubble__title">yes, You win!!</h1>
+            <button className="btn btn--main" onClick={this.playAgain}>play again</button>
+          </Modal>
+        );
+      }
     }
+    const renderComics = this.state.comics.length > 0 ? this.renderCards(this.state.comics) : <h1 className="bubble__title">Loading...</h1>;
+
     return(
       <div className="cards">
         {renderComics}
+        {renderEndGame()}
       </div>
     );
   }

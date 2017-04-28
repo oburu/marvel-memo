@@ -27,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-          <Header/>
+          <Header headerStyle="header"/>
           <HomePage homePageStyles={this.state.showHomePage} onStartClick={this.showMenu}/>
           <GamePage onStartClick={this.showMenu} startGame={this.state.startGame}/>
       </div>
