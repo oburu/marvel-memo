@@ -99,6 +99,9 @@ body, html {
   padding-left: 15px;
   padding-top: 25px;
 }
+.bubble__title--center{
+  text-align: center;
+}
 .bubble__p{
   padding-left: 15px;
   padding-right: 15px;
@@ -262,7 +265,7 @@ body, html {
   font-weight: 400;
 }
 .buttons-section{
-  padding-top: 20px;
+  /*padding-top: 20px;*/
 }
 
 .modal-overlay{
@@ -344,7 +347,7 @@ body, html {
   }
   .bubble-side-heroe-img {
     height: 60px;
-}
+  }
   .bubble-side {
     width: 60%;
     height: 40px;

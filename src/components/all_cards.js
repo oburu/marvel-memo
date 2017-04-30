@@ -8,7 +8,7 @@ const PRIV_KEY = "c489aff329d83d09815b554f38d843ba42a5061a";
 const PUBLIC_KEY = "2a7fca050595ffa66aaf74e2b1bae70f";
 const URL = 'https://gateway.marvel.com/v1/public/comics';
 
-function generateArray(rawData){
+const generateArray = (rawData) => {
   return rawData.map((item, index) =>{
     return {
       image: item.thumbnail.path+"."+item.thumbnail.extension,
@@ -146,7 +146,7 @@ class AllCards extends Component{
         );
       }
     }
-    const renderComics = this.state.comics.length > 0 ? this.renderCards(this.state.comics) : <h1 className="bubble__title">Loading...</h1>;
+    const renderComics = this.state.comics.length > 0 ? this.renderCards(this.state.comics) : <h1 className="bubble__title bubble__title--center">Loading...</h1>;
 
     return(
       <div className="cards">
