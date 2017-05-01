@@ -8,10 +8,15 @@ const PRIV_KEY = "c489aff329d83d09815b554f38d843ba42a5061a";
 const PUBLIC_KEY = "2a7fca050595ffa66aaf74e2b1bae70f";
 const URL = 'https://gateway.marvel.com/v1/public/comics';
 
+const insert = (index, url, char) => {
+  var ind = index < 0 ? url.length + index  :  index;
+  return  url.substring(0, ind) + char + url.substring(ind, url.length);
+};
+
 const generateArray = (rawData) => {
   return rawData.map((item, index) =>{
     return {
-      image: item.thumbnail.path+"."+item.thumbnail.extension,
+      image: insert(4,item.thumbnail.path, 's') + "." + item.thumbnail.extension,
       value: item.id,
       matched: false,
       flipped: false
@@ -60,7 +65,7 @@ class AllCards extends Component{
     comics.sort(() =>  0.5 - Math.random());
     let comic6 = comics.slice(0, 6);//pick eight first
     let comicDuplicate = comic6.concat(comic6);
-    generateArray(comicDuplicate.sort(() =>  0.5 - Math.random()));
+    comicDuplicate.sort(() =>  0.5 - Math.random());
     this.setState({
       comics: generateArray(comicDuplicate),
       matches: 0
