@@ -189,6 +189,13 @@ body, html {
   text-align: center;
   padding: 20px;
 }
+.home-page-footer--p a{
+  color:#636363;
+  text-decoration: none;
+}
+.home-page-footer--p a:hover{
+  text-decoration: underline;
+}
 
 .bubble-side{
   position: relative;
@@ -357,7 +364,7 @@ body, html {
 
   .bubble-side__title{
     font-size: 1.2rem;
-    padding: 13px;
+    padding: 13px 5px;
   }
   .bubble__p{
     font-size: 1rem;

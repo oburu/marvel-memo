@@ -61,7 +61,7 @@ class GamePage extends Component {
         </div>
         <div className="home-page-footer">
           <div className="container">
-            <p className="home-page-footer--p">Data provided by Marvel. © 2017 MARVEL | Rebus.io </p>
+            <p className="home-page-footer--p">Data provided by Marvel. © 2017 MARVEL | <a href="https://github.com/oburu/marvel-memo" target="_blank">Github ✌</a> </p>
           </div>
         </div>
         {renderModal()}

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 const notYet = {
   textDecoration: 'line-through',
-  cursor: 'not-allowed'	
+  cursor: 'not-allowed'
 }
 class HomePage extends Component {
   constructor(props){
@@ -44,7 +44,7 @@ class HomePage extends Component {
         </div>
         <div className="home-page-footer">
           <div className="container">
-            <p className="home-page-footer--p">Rebus.io 2017 ©</p>
+            <p className="home-page-footer--p"><a href="https://github.com/oburu/marvel-memo" target="_blank">Rebus.io 2017 © ✌</a></p>
           </div>
         </div>
       </div>

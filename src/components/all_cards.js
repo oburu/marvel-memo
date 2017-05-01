@@ -101,7 +101,7 @@ class AllCards extends Component{
         comics[id].matched = true;
         comics[this.state.lastCard.id].matched = true;
         this.setState({comics, lastCard: null, locked: false, matches: matches + 1});
-        this.props.message('GOOD, you are the best!');
+        this.props.message("GOOD,you're the best!");
       } else {
         setTimeout(() => {
           comics[id].flipped = false;
