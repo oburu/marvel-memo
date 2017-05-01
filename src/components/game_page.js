@@ -8,7 +8,7 @@ class GamePage extends Component {
     super(props);
 
     this.state = {
-      message: 'Wait a sec...',
+      message: 'hold on, Fetchig data',
       showModal: false
     }
     this.onQuit = this.onQuit.bind(this);
@@ -32,7 +32,6 @@ class GamePage extends Component {
   changeMessage(message){
     this.setState({message});
   }
-
 
   render(){
     const renderModal = () =>{

@@ -5,7 +5,14 @@ class Card extends Component{
   constructor(props){
     super(props);
 
+    this.state = {card:'card card__loading'}
+    
     this.handleClick = this.handleClick.bind(this);
+  }
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({ card: 'card' });
+    },400);
   }
 
   handleClick(e) {
@@ -16,9 +23,9 @@ class Card extends Component{
 
   render(){
     var classes = classnames(
-      'card',
-      {'card flip': this.props.flipped},
-      {'card matched': this.props.matched}
+      this.state.card,
+      {'flip': this.props.flipped},
+      {'matched': this.props.matched}
     );
     return(
       <div className="flip-container" onClick={this.handleClick}>

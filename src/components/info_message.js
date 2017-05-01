@@ -9,12 +9,15 @@ class InfoMessage extends Component{
     }
   }
   componentWillReceiveProps(){
+    this.setState({
+      messageStyle: "bubble-side bubble-side-down"
+
+    });
     setTimeout(()=>{
       this.setState({
         messageStyle: "bubble-side"
-
       });
-    },1000);
+    },200);
 
   }
   render(){
