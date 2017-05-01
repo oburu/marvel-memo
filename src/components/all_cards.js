@@ -65,7 +65,7 @@ class AllCards extends Component{
       comics: generateArray(comicDuplicate),
       matches: 0
     });// set state
-    this.props.message('Ok, pick 2 card');
+    this.props.message('Ok, pick 2 cards.');
   }
 
   componentWillReceiveProps(nextProps){
@@ -103,8 +103,8 @@ class AllCards extends Component{
           comics[this.state.lastCard.id].flipped = false;
           this.setState({comics, lastCard: null, locked: false});
           this.props.message("it's ok, keep going!");
-        }, 1000);
-        this.props.message('OUCH');
+        }, 1500);
+        this.props.message('OUCH, close one!');
       }
     } else {
       this.setState({

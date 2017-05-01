@@ -11,9 +11,15 @@ class App extends Component {
 
     this.state = {
       showHomePage:HOME_PAGE_DOWN,
-      startGame: false
+      startGame: false,
+      preloaderCss:'preloader preloader-onload'
     }
     this.showMenu = this.showMenu.bind(this);
+  }
+  componentDidMount(){
+    setTimeout(()=>{
+      this.setState({preloaderCss: 'preloader'});
+    },1000);
   }
 
   showMenu(){
@@ -27,6 +33,7 @@ class App extends Component {
   render() {
     return (
       <div className="app">
+          <div className={this.state.preloaderCss}><h1>Loading...</h1></div>
           <Header headerStyle="header"/>
           <HomePage homePageStyles={this.state.showHomePage} onStartClick={this.showMenu}/>
           <GamePage onStartClick={this.showMenu} startGame={this.state.startGame}/>

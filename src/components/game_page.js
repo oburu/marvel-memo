@@ -8,7 +8,7 @@ class GamePage extends Component {
     super(props);
 
     this.state = {
-      message: 'hold on, Fetchig data',
+      message: 'Fetchig comics.',
       showModal: false
     }
     this.onQuit = this.onQuit.bind(this);

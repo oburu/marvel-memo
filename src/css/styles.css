@@ -13,6 +13,26 @@ body, html {
   width:600px;
   margin: 0 auto;
 }
+.preloader{
+  color:rgba(255, 255, 255, 0);
+  opacity: 0;
+  transition: 300ms ease-out all;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  z-index: 2;
+  padding-top: 100px;
+  visibility: hidden;
+  text-align: center;
+  font-family: monospace;
+}
+.preloader-onload{
+  color:rgba(255, 255, 255, 0.5);
+  visibility: visible;
+  opacity:1;
+  padding-top: 200px;
+}
 
 .header{
   background-color: black;
@@ -23,7 +43,6 @@ body, html {
   z-index: 2;
   border-bottom: 1px solid #424040;
   transition: 800ms all;
-
 }
 
 .header-title{
@@ -101,6 +120,9 @@ body, html {
 }
 .bubble__title--center{
   text-align: center;
+}
+.bubble-side__title{
+  letter-spacing: 1px;
 }
 .bubble__p{
   padding-left: 15px;
