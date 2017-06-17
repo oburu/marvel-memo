@@ -1,3 +1,3 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
-This is a simple memory game made in React, Webpack, Firebase and Marvels-API.
+This is a simple memory game made in React, Webpack, Firebase and Marvels-API. Designed by me.
